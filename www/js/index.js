@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+    
 var app = {
     // Application Constructor
     initialize: function() {
@@ -47,3 +48,33 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+var user = false;
+var SessionManager = function()
+{
+    this.init = function()
+    {
+        this.form = document.getElementById('pg-login');
+        this.username;
+        this.password;
+        console.log('in the init;')
+    }
+    this.listen = function()
+    {
+        //
+        $(this.form).submit(function(e){
+            e.preventDefault();
+            console.log(data);
+            var username = document.getElementById('email').value;
+            console.log(username);
+            console.log('inside submitr functrion');
+        })
+        console.log('in the listen');
+    }
+    this.init();
+    this.listen();
+}
+var sm = new SessionManager();
+
+
+
