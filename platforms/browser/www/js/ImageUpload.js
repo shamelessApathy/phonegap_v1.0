@@ -38,6 +38,7 @@ var ImageUpload = function(){
               fd.append('tags', $('#tag_holder').val());
               fd.append('category_id', cat_id.options[cat_id.selectedIndex].value);
               fd.append('image_name', $('#image-name').val());   
+              fd.append('rotate',$('#rotate').val());
               var xhr = new XMLHttpRequest();
               xhr.open('POST', 'https://sharefuly.com/api/test', true);
               
