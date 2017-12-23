@@ -32,15 +32,15 @@ var ImageUpload = function(){
             console.log(file[0].files[0]);
             var true_file = file[0].files[0];
               var fd = new FormData();
-              fd.append("afile", true_file);
+              fd.append("image", true_file);
               // These extra params aren't necessary but show that you can include other data.
               fd.append("user_id", this.user_id);
               fd.append('tags', $('#tag_holder').val());
-              fd.append('category_id', cat_id.options[cat_id.selectedIndex].value);
-              fd.append('image_name', $('#image-name').val());   
+              fd.append('category-id', cat_id.options[cat_id.selectedIndex].value);
+              fd.append('image-name', $('#image-name').val());   
               fd.append('rotate',$('#rotate').val());
               var xhr = new XMLHttpRequest();
-              xhr.open('POST', 'https://sharefuly.com/api/test', true);
+              xhr.open('POST', 'https://sharefuly.com/image/new_image', true);
               
               xhr.upload.onprogress = function(e) {
                 if (e.lengthComputable) {
