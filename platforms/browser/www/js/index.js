@@ -662,6 +662,11 @@ var SessionManager = function()
         this.password;
         console.log('in the init;')
     }
+    this.setCookie = function(user_id_value, username_value) 
+    {
+    document.cookie = "user_id=" + user_id_value + ";" ;
+    document.cookie = "username" + '=' + username_value + ";";
+    }  
     this.listen = function()
     {
         //
@@ -670,22 +675,21 @@ var SessionManager = function()
             var username = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             var sha_password = SHA256(password);
-            console.log(sha_password);
             data = {"username":username, "password":password};            
             $.ajax({
                 url:"https://sharefuly.com/api/login",
                 data:data,
                 method:"POST",
                 success:function(results){
-                    user = results;
-                    console.log(user);
+                    var json_parse = JSON.parse(results);
+                    this.setCookie(json_parse.user_id, json_parse.username);
                     window.location ='upload_image.html';
-                }
+                }.bind(this)
 
             });
-        })
+        }.bind(this));
         console.log('in the listen');
-    }
+    }.bind(this)
     this.init();
     this.listen();
 }
