@@ -274,19 +274,12 @@ function SHA256(s){
 127
 
 /**
-
 *
-
 *  Secure Hash Algorithm (SHA256)
-
 *  http://www.webtoolkit.info/
-
 *
-
 *  Original code by Angel Marin, Paul Johnston.
-
 *
-
 **/
 
  
@@ -656,20 +649,7 @@ var app = {
     }
 };
 
-// Tool in OOP ES5 to upload images via phonegap android app
-var ImageUpload = function(){
-    this.init = function()
-    {
-        window.location= 'upload_image.html';
-        console.log('inside init() funciton of ImageUpload');
-    }
-    this.listen = function()
-    {
-        console.log('inside of ImageUpload');
-    }
-    this.init();
-    this.listen();
-}
+
 
 
 var user = false;
@@ -699,7 +679,7 @@ var SessionManager = function()
                 success:function(results){
                     user = results;
                     console.log(user);
-                    var iu = new ImageUpload();                    
+                    window.location ='upload_image.html';
                 }
 
             });

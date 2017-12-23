@@ -44,7 +44,7 @@
 <div class='mobile-upload'>
 <div class='upload-warning'>Make sure your image is orientated properly, look at the preview <a href='#below'>below</a></div>
 <h3 class='upload-title'> Upload an Image</h3>
-<form enctype='multipart/form-data' id='pg-file-form' method="POST">
+<form enctype='multipart/form-data' id='pg-file-form'>
 <label class='image_file_label' for='image_file'>Choose an Image</label>
 <input type='file' id='image_file' name='image'><br>
 <label>Image Name:</label><br>
@@ -69,7 +69,7 @@
 <input id='new_tag'><button id='add_tag' type='button'>Add</button>
 <br>
 <input type='number' name='rotate' id='rotate' value='0' HIDDEN>
-<button style='margin-top:10px;' type='submit'>Submit</button>
+<button style='margin-top:10px;' id='ie-upload-submit'>Submit</button>
 </div>
 <br>
 
@@ -94,6 +94,7 @@
 <script src='js/jqueryrotate.js' type='text/javascript' rel='javascript'></script>
 <script src='js/tag_format.js' type='text/javascript' rel='javascript'></script>
 <script src='js/category.js' type='text/javascript' rel='javascript'></script>
+<script src='js/ImageUpload.js' type='text/javascript' rel='javascript'></script>
 	
 
 
