@@ -19,14 +19,14 @@ var ImageUpload = function(){
             return "";
         }
         console.log('inside init() funciton of ImageUpload');   
-        var user_id = getCookie("user_id");
-        console.log(user_id);
+        this.user_id = getCookie("user_id");
         
     }
     this.listen = function()
     {
         $('#ie-upload-submit').on('click', function(e) 
         {
+            var cat_id = document.getElementById('upload-category');
             e.preventDefault();
             var file = $('#image_file');
             console.log(file[0].files[0]);
@@ -34,8 +34,10 @@ var ImageUpload = function(){
               var fd = new FormData();
               fd.append("afile", true_file);
               // These extra params aren't necessary but show that you can include other data.
-              fd.append("username", "Groucho");
-              fd.append("accountnum", 123456);
+              fd.append("user_id", this.user_id);
+              fd.append('tags', $('#tag_holder').val());
+              fd.append('category_id', cat_id.options[cat_id.selectedIndex].value);
+              fd.append('image_name', $('#image-name').val());   
               var xhr = new XMLHttpRequest();
               xhr.open('POST', 'https://sharefuly.com/api/test', true);
               
@@ -55,8 +57,8 @@ var ImageUpload = function(){
                 };
               };
               xhr.send(fd);  
-        })
-    }
+        }.bind(this))
+    }.bind(this)
     this.init();
     this.listen();
 }
