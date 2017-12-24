@@ -675,15 +675,16 @@ var SessionManager = function()
             var username = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             var sha_password = SHA256(password);
-            data = {"username":username, "password":password};            
+            data = {"username":username, "password":sha_password};            
             $.ajax({
                 url:"https://sharefuly.com/api/login",
                 data:data,
                 method:"POST",
-                success:function(results){
+                success:function(results)
+                {
                     var json_parse = JSON.parse(results);
                     this.setCookie(json_parse.user_id, json_parse.username);
-                    window.location ='upload_image.html';
+                    window.location ='actions.html';
                 }.bind(this)
 
             });

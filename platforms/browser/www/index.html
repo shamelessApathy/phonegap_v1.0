@@ -42,7 +42,6 @@
         * Enable eval(): add 'unsafe-eval' to default-src
     * Create your own at http://cspisawesome.com
     -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>Sharefuly</title>
@@ -50,10 +49,13 @@
 
 <body>
     <div class="app">
-        <h1>PhoneGap</h1>
+        <div id='sharefuly-logo'>
+            <img src='img/sharefulynewlogo.png'/>
+        </div>
+        <h1>Sharefuly</h1>
         <div class='container'>
             <div class='style01-form-container'>
-                <h1> Login</h1>
+                <h1>Login</h1>
                 <!-- /user/verify to normally login via webpage -->
                 <form id='pg-login'>
                 <label>Email</label><br>

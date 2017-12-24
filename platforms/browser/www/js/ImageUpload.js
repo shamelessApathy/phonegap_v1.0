@@ -1,4 +1,4 @@
-// Tool in OOP ES5 to upload images via phonegap android app
+  // Tool in OOP ES5 to upload images via phonegap android app
 var ImageUpload = function(){
     this.init = function()
     {
@@ -39,6 +39,7 @@ var ImageUpload = function(){
               fd.append('category-id', cat_id.options[cat_id.selectedIndex].value);
               fd.append('image-name', $('#image-name').val());   
               fd.append('rotate',$('#rotate').val());
+              fd.append('app', "true");
               var xhr = new XMLHttpRequest();
               xhr.open('POST', 'https://sharefuly.com/image/new_image', true);
               
@@ -51,10 +52,13 @@ var ImageUpload = function(){
               xhr.onload = function() {
                 if (this.status == 200) {
                   var resp = this.response; 
-                  console.log('Server got:', resp);
-                  var image = document.createElement('img');
-                  image.src = resp.dataUrl;
-                  document.body.appendChild(image);
+                  if (resp === "true")
+                  {
+                    if(confirm('Image Upload Sucessful!'))
+                    {
+                      window.location = "upload_image.html";
+                    }
+                  }
                 };
               };
               xhr.send(fd);  

@@ -1,51 +1,18 @@
-<head>
-	<link href='css/index.css' rel='stylesheet' type='style/css'/>
-	<link href='css/styles.css' rel='stylesheet' type='style/css'/>
-	<link href='css/bootstrap/css/bootstrap.css' rel='stylesheet' type='style/css'/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel='stylesheet' type='text/css' href='css/app-styles.css'/>
 
 
 
-<style>
-	.mobile-upload {
-  margin: 0 auto;
-  width: 300px; }
-  button {
-  background-color: #333;
-  color: #ccc;
-  font-weight: 700; }
-  .image-controls {
-  width: 300px;
-  height: 45px;
-  background-color: #333;
-  margin:0 auto;
-  font-size: 30px;
-  display: none; }
 
-.image-controls i {
-  background-color: #f2f2f2;
-  color: #333;
-  margin: 5px;
-  padding: 2px; }
-
- .upload_preview_holder
- {
- 	width:300px;
- 	margin:0 auto;
- }
-</style>
 
 <body>
 <div id='pg-user-avatar'></div>
-<div class='desktop'>
-<div class='container'>
-
-<div class='mobile-upload'>
+<div class='app-upload-container'>
 <div class='upload-warning'>Make sure your image is orientated properly, look at the preview <a href='#below'>below</a></div>
 <h3 class='upload-title'> Upload an Image</h3>
 <form enctype='multipart/form-data' id='pg-file-form'>
-<label class='image_file_label' for='image_file'>Choose an Image</label>
+<label class='image_file_label' for='image_file'>Choose File</label>
 <input type='file' id='image_file' name='image'><br>
 <label>Image Name:</label><br>
 <input type='text' id='image-name' name='user_image_name'/><br>
@@ -70,7 +37,7 @@
 <br>
 <input type='number' name='rotate' id='rotate' value='0' HIDDEN>
 <button style='margin-top:10px;' id='ie-upload-submit'>Submit</button>
-</div>
+
 <br>
 
 </form>
@@ -85,8 +52,8 @@
 	<img width=300  id='upload_preview'/>
 	</div>	
 </div> 
-</div>
-</div>
+
+
 
 
 
