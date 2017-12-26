@@ -662,10 +662,21 @@ var SessionManager = function()
         this.password;
         console.log('in the init;')
     }
-    this.setCookie = function(user_id_value, username_value) 
+    this.setCookie = function(user_id_value, username_value,avatar) 
     {
-    document.cookie = "user_id=" + user_id_value + ";" ;
-    document.cookie = "username" + '=' + username_value + ";";
+        var time = Math.floor(Date.now() / 1000);
+        var expires = time + 3600; //(adding an hour) before expiration
+        document.cookie = "user_id=" + user_id_value + ";" ;
+        document.cookie = "username" + '=' + username_value + ";";
+        document.cookie = 'avatar' + '=' + avatar + ";";
+            // Default at 365 days.
+        days = 365;
+        var date = new Date();
+        // Get unix milliseconds at current time plus number of days
+        date.setTime(+ date + (days * 86400000)); //24 * 60 * 60 * 1000
+
+        document.cookie = "expires=" + date.toGMTString();
+        //document.cookie = "expires" + ''
     }  
     this.listen = function()
     {
@@ -682,9 +693,31 @@ var SessionManager = function()
                 method:"POST",
                 success:function(results)
                 {
+                    if (results && results != 'false')
+                    {
                     var json_parse = JSON.parse(results);
-                    this.setCookie(json_parse.user_id, json_parse.username);
-                    window.location ='actions.html';
+
+                        if (!json_parse.user_id || json_parse.user_id === undefined)
+                        {
+                            if(confirm("Wrong login credentials"))
+                            {
+                                window.location = "index.html";
+                            }                        
+                        }
+                        else
+                        {
+                            this.setCookie(json_parse.user_id, json_parse.username, json_parse.avatar);
+                            window.location ='actions.html';
+                        }
+                    }
+                    else
+                    {
+                        if(confirm("Wrong login credentials"))
+                        {
+                            window.location = "index.html";
+                        }                        
+                    }
+
                 }.bind(this)
 
             });
